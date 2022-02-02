@@ -1,6 +1,5 @@
 package fr.lorek.notifnotes;
 
-import jdk.tools.jmod.Main;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
