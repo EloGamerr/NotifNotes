@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+}
+
+group 'fr.lorek'
+version '1.0'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+compileJava.options.encoding = 'UTF-8'
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    extraLibs
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    extraLibs group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
+    extraLibs group: 'commons-io', name: 'commons-io', version: '2.11.0'
+    extraLibs group: 'org.json', name: 'json', version: '20211205'
+    extraLibs group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1'
+    configurations.implementation.extendsFrom(configurations.extraLibs)
+
+}
+
+jar {
+    manifest.attributes "Main-Class": "fr.lorek.notifnotes.MainNotif"
+    from {
+        configurations.extraLibs.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+}
+
+test {
+    useJUnitPlatform()
+}
