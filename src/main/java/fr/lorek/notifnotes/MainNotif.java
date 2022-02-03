@@ -196,7 +196,7 @@ public class MainNotif {
             SystemTray tray = SystemTray.getSystemTray();
 
             //Alternative (if the icon is on the classpath):
-            Image image = Toolkit.getDefaultToolkit().createImage(MainNotif.class.getResource("logo_animated.gif"));
+            Image image = Toolkit.getDefaultToolkit().createImage(MainNotif.class.getResource("/logo_animated.gif"));
 
             TrayIcon trayIcon = new TrayIcon(image, "DorianSquare");
             //Let the system resize the image if needed
